@@ -117,8 +117,8 @@ h1, h2, h3, h4, h5, h6, .brand-font {
   min-height: 85vh;
   display: flex;
   align-items: center;
-  background: linear-gradient(rgba(11, 79, 63, 0.72), rgba(7, 56, 45, 0.82)),
-              url('../images/brochure_back.jpg') center/cover no-repeat;
+  background: linear-gradient(rgba(7, 56, 45, 0.65), rgba(7, 56, 45, 0.78)),
+              url('../images/big_lagoon.jpg') center/cover no-repeat;
   color: white;
   padding: 120px 0 80px 0;
 }
