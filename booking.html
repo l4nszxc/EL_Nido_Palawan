@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Online Booking & Reservation | El Nido, Palawan Tourism</title>
+  <meta name="description" content="Official client-side online reservation system for El Nido tour packages. Instant booking, real-time fee calculations, and local database confirmation. No SQL required.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- TOP TICKER -->
+  <div class="py-2 px-3 bg-dark text-white border-bottom border-warning d-none d-md-block" style="font-size: 0.85rem;">
+    <div class="container d-flex justify-content-between align-items-center">
+      <div>
+        <i class="bi bi-geo-alt-fill text-warning me-2"></i>
+        <span>NIPAP Building, Real Street, Brgy. Buena Suerte, El Nido, Palawan</span>
+        <span class="mx-3 text-secondary">|</span>
+        <i class="bi bi-telephone-fill text-warning me-2"></i>
+        <span>0919-002-1389 / 0906-449-0282</span>
+      </div>
+      <div>
+        <span class="badge bg-success me-2"><i class="bi bi-shield-check"></i> Municipal Accredited</span>
+        <span class="text-light"><i class="bi bi-envelope me-1"></i> elnidotourism@gmail.com</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAVIGATION -->
+  <nav class="navbar navbar-expand-lg elnido-navbar sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <i class="bi bi-water text-warning fs-3"></i>
+        <div>
+          <span class="d-block brand-font fw-bold lh-1 text-white">EL NIDO</span>
+          <span class="d-block small text-warning fw-normal" style="font-size: 0.72rem; letter-spacing: 0.15em;">PALAWAN, PHILIPPINES</span>
+        </div>
+      </a>
+      <button class="navbar-toggler text-white border-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
+        <i class="bi bi-list fs-2"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarMain">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+          <li class="nav-item"><a class="nav-link" href="index.html"><i class="bi bi-house-door me-1"></i> Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About El Nido</a></li>
+          <li class="nav-item"><a class="nav-link" href="destinations.html">Attractions</a></li>
+          <li class="nav-item"><a class="nav-link" href="packages.html">Tour Packages</a></li>
+          <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+          <li class="nav-item"><a class="nav-link" href="travel-info.html">Travel Guide</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+          <li class="nav-item ms-lg-2">
+            <a class="nav-link nav-cta-btn active" href="booking.html">
+              <i class="bi bi-calendar-check me-1"></i> Book Now
+              <span class="badge-count" id="bookingCountBadge">0</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <header class="py-5 text-white" style="background: linear-gradient(rgba(11, 79, 63, 0.88), rgba(7, 56, 45, 0.94)), url('assets/images/brochure_front.jpg') center/cover no-repeat;">
+    <div class="container py-4 text-center">
+      <span class="badge bg-warning text-dark px-3 py-2 rounded-pill fw-bold text-uppercase mb-3">Digital Business Application</span>
+      <h1 class="display-4 fw-bold mb-3">Online Booking &amp; Reservation Portal</h1>
+      <p class="lead text-white-50 mx-auto" style="max-width: 740px;">
+        Reserve your El Nido adventure online. Real-time cost breakdown, persistent client-side database storage, and instant municipal confirmation vouchers.
+      </p>
+    </div>
+  </header>
+
+  <!-- MAIN BOOKING SYSTEM -->
+  <main class="py-5">
+    <div class="container py-3">
+
+      <div class="row g-5">
+        <!-- BOOKING FORM COLUMN -->
+        <div class="col-lg-7">
+          <div class="custom-card p-4 p-md-5">
+            <div class="d-flex align-items-center justify-content-between mb-4 border-bottom pb-3">
+              <div>
+                <span class="section-tag mb-1">Step 1 of 2</span>
+                <h3 class="fw-bold text-dark mb-0">Tour Reservation Form</h3>
+              </div>
+              <span class="badge bg-success py-2 px-3"><i class="bi bi-shield-lock-fill me-1"></i> Secure Form</span>
+            </div>
+
+            <!-- Academic Compliance Notice -->
+            <div class="alert alert-info py-2 px-3 small mb-4" role="alert">
+              <i class="bi bi-info-circle-fill me-1"></i>
+              <strong>Privacy Assurance:</strong> Only non-sensitive tourist data is collected for reservation scheduling. No credit cards or SQL servers are used.
+            </div>
+
+            <form id="bookingForm">
+              <!-- Contact Information -->
+              <h5 class="fw-bold text-dark mb-3"><i class="bi bi-person-lines-fill text-success me-2"></i>Lead Traveler Details</h5>
+              <div class="row g-3 mb-4">
+                <div class="col-md-6">
+                  <label for="bookFullName" class="form-label fw-semibold small">Full Name *</label>
+                  <input type="text" class="form-control" id="bookFullName" required placeholder="e.g. Juan Dela Cruz">
+                </div>
+                <div class="col-md-6">
+                  <label for="bookEmail" class="form-label fw-semibold small">Email Address *</label>
+                  <input type="email" class="form-control" id="bookEmail" required placeholder="e.g. juan@example.ph">
+                </div>
+                <div class="col-md-6">
+                  <label for="bookPhone" class="form-label fw-semibold small">Contact Number *</label>
+                  <input type="tel" class="form-control" id="bookPhone" required placeholder="0917-000-0000">
+                </div>
+                <div class="col-md-6">
+                  <label for="bookNationality" class="form-label fw-semibold small">Country of Residence</label>
+                  <input type="text" class="form-control" id="bookNationality" value="Philippines">
+                </div>
+              </div>
+
+              <!-- Package & Date Details -->
+              <h5 class="fw-bold text-dark mb-3"><i class="bi bi-calendar-event text-success me-2"></i>Trip Selection</h5>
+              <div class="row g-3 mb-4">
+                <div class="col-12">
+                  <label for="bookPackage" class="form-label fw-semibold small">Choose Tour Package *</label>
+                  <select id="bookPackage" class="form-select" required>
+                    <option value="8500" data-name="4 Days & 3 Nights Island Escape (Featured)" selected>
+                      ★ 4 Days &amp; 3 Nights Island Escape (Featured Promo) — ₱8,500/pax
+                    </option>
+                    <option value="1200" data-name="Tour A Island Hopping (Big Lagoon & Secret Lagoon)">
+                      Tour A Island Hopping — ₱1,200/pax
+                    </option>
+                    <option value="1300" data-name="Tour C Hidden Beaches & Matinloc Shrine">
+                      Tour C Hidden Beaches — ₱1,300/pax
+                    </option>
+                    <option value="2500" data-name="Inland Beach Safari (Nacpan, Calitang & Las Cabañas)">
+                      Inland Beach Safari — ₱2,500/pax
+                    </option>
+                    <option value="14500" data-name="5D4N Ultimate Eco-Luxury Island Retreat">
+                      5D4N Ultimate Eco-Luxury Retreat — ₱14,500/pax
+                    </option>
+                  </select>
+                </div>
+                <div class="col-md-6">
+                  <label for="bookDate" class="form-label fw-semibold small">Preferred Travel Date *</label>
+                  <input type="date" class="form-control" id="bookDate" required>
+                </div>
+                <div class="col-md-6">
+                  <label for="bookGuests" class="form-label fw-semibold small">Number of Guests *</label>
+                  <input type="number" class="form-control" id="bookGuests" min="1" max="30" value="2" required>
+                </div>
+              </div>
+
+              <!-- Optional Add-ons (Directly from Brochure) -->
+              <h5 class="fw-bold text-dark mb-3"><i class="bi bi-plus-circle text-success me-2"></i>Optional Add-ons &amp; Permits</h5>
+              <div class="bg-light p-3 rounded-3 mb-4">
+                <div class="form-check mb-2">
+                  <input class="form-check-input" type="checkbox" id="bookAddEcoFee" checked>
+                  <label class="form-check-label small" for="bookAddEcoFee">
+                    <strong>ETDF Eco-Tourism Development Fee</strong> (₱200/pax &bull; Municipal conservation fee valid 10 days)
+                  </label>
+                </div>
+                <div class="form-check mb-2">
+                  <input class="form-check-input" type="checkbox" id="bookAddKayak" checked>
+                  <label class="form-check-label small" for="bookAddKayak">
+                    <strong>Big Lagoon Tandem Kayak Rental</strong> (₱300/pax &bull; 2-person ocean kayak)
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="bookAddVan">
+                  <label class="form-check-label small" for="bookAddVan">
+                    <strong>Puerto Princesa Roundtrip Aircon Van Transfer</strong> (₱700/pax)
+                  </label>
+                </div>
+              </div>
+
+              <!-- Special Requests -->
+              <div class="mb-4">
+                <label for="bookNotes" class="form-label fw-semibold small">Special Requests / Dietary Needs</label>
+                <textarea class="form-control" id="bookNotes" rows="2" placeholder="e.g. Vegetarian feast, hotel pickup location, anniversary setup..."></textarea>
+              </div>
+
+              <!-- Submit Button -->
+              <div class="d-grid">
+                <button type="submit" class="btn btn-tropical-gold btn-lg fw-bold shadow">
+                  <i class="bi bi-check2-circle me-1"></i> Confirm Reservation &amp; Generate Voucher
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- SUMMARY & LOCAL DATABASE STATUS COLUMN -->
+        <div class="col-lg-5">
+          <!-- Real-Time Booking Breakdown -->
+          <div class="custom-card p-4 mb-4 border-top border-4 border-success">
+            <h5 class="fw-bold text-dark mb-3"><i class="bi bi-receipt text-success me-2"></i>Estimated Summary</h5>
+            <div class="d-flex justify-content-between mb-2 small">
+              <span class="text-muted" id="summaryPkgName">4D3N Island Escape</span>
+              <strong id="summaryPkgCost">₱17,000</strong>
+            </div>
+            <div class="d-flex justify-content-between mb-2 small">
+              <span class="text-muted">Eco Fee (₱200/pax):</span>
+              <span id="summaryEcoCost">₱400</span>
+            </div>
+            <div class="d-flex justify-content-between mb-2 small">
+              <span class="text-muted">Kayak Rental (₱300/pax):</span>
+              <span id="summaryKayakCost">₱600</span>
+            </div>
+            <div class="d-flex justify-content-between mb-3 small">
+              <span class="text-muted">Van Transfer:</span>
+              <span id="summaryVanCost">₱0</span>
+            </div>
+            <hr>
+            <div class="d-flex justify-content-between align-items-baseline mb-3">
+              <span class="fw-bold text-dark">Estimated Grand Total:</span>
+              <span class="fs-3 fw-bold text-success" id="summaryTotalAmount">₱18,000</span>
+            </div>
+            <small class="text-muted d-block">
+              Payment is settled upon arrival at the Municipal Tourism Office or through accredited cash/e-wallet vouchers.
+            </small>
+          </div>
+
+          <!-- LOCAL STORAGE DATABASE MANAGER (No SQL Requirement) -->
+          <div class="custom-card p-4">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h5 class="fw-bold text-dark mb-0">
+                <i class="bi bi-database-check text-primary me-2"></i>My Bookings
+              </h5>
+              <button class="btn btn-outline-danger btn-sm" onclick="clearAllBookings()" title="Clear local database">
+                <i class="bi bi-trash"></i> Reset DB
+              </button>
+            </div>
+            <p class="small text-muted mb-3">
+              Stored locally on your browser using HTML5 Client-Side Database. Zero SQL dependencies required.
+            </p>
+
+            <div id="bookingHistoryContainer">
+              <!-- Dynamically populated from LocalDB -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- CONFIRMATION MODAL & VOUCHER -->
+  <div class="modal fade" id="bookingConfirmationModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0 shadow-lg">
+        <div class="modal-header bg-success text-white">
+          <h5 class="modal-title fw-bold"><i class="bi bi-check-circle-fill me-2"></i>Booking Confirmed!</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4 text-center">
+          <div class="display-4 text-success mb-2"><i class="bi bi-ticket-detailed-fill"></i></div>
+          <h5 class="fw-bold text-dark mb-1">Official Municipal E-Voucher</h5>
+          <p class="text-muted small mb-3">Please save or present this reference code upon arrival in El Nido.</p>
+
+          <div class="p-3 bg-light rounded-3 border mb-3 text-start small">
+            <div><strong>Reference Number:</strong> <span class="badge bg-primary fs-6" id="voucherRefCode">EN-2026-0000</span></div>
+            <div class="mt-2"><strong>Lead Guest:</strong> <span id="voucherGuestName">Juan Dela Cruz</span></div>
+            <div><strong>Package:</strong> <span id="voucherPackage">4D3N Island Escape</span></div>
+            <div><strong>Date of Travel:</strong> <span id="voucherDate">2026-11-20</span></div>
+            <div><strong>Total Guests:</strong> <span id="voucherPax">2 Pax</span></div>
+            <div><strong>Total Amount:</strong> <strong class="text-success fs-6" id="voucherTotal">₱18,000</strong></div>
+            <div class="mt-2 border-top pt-2 text-muted"><strong>Office Desk:</strong> NIPAP Bldg, Real St, Brgy. Buena Suerte</div>
+          </div>
+
+          <div class="d-flex gap-2 justify-content-center">
+            <button class="btn btn-success" onclick="window.print()"><i class="bi bi-printer me-1"></i> Print Voucher</button>
+            <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="elnido-footer">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4 col-md-6">
+          <div class="d-flex align-items-center gap-2 mb-3">
+            <i class="bi bi-water text-warning fs-2"></i>
+            <span class="fs-4 fw-bold text-white">EL NIDO, PALAWAN</span>
+          </div>
+          <p class="small text-white-50 mb-3">Official Municipal Tourism Information and Online Reservation Platform.</p>
+          <div class="d-flex gap-2">
+            <a href="https://facebook.com" target="_blank" class="social-icon-btn"><i class="bi bi-facebook"></i></a>
+            <a href="https://instagram.com" target="_blank" class="social-icon-btn"><i class="bi bi-instagram"></i></a>
+            <a href="https://twitter.com" target="_blank" class="social-icon-btn"><i class="bi bi-twitter-x"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6 col-6">
+          <h5 class="footer-heading">Quick Links</h5>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="destinations.html">Attractions</a></li>
+            <li><a href="packages.html">Packages</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-6 col-6">
+          <h5 class="footer-heading">Travel Help</h5>
+          <ul class="footer-links">
+            <li><a href="travel-info.html">Travel Guide</a></li>
+            <li><a href="booking.html">Booking Portal</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <h5 class="footer-heading">Tourism Office Location</h5>
+          <p class="small text-white-50 mb-2"><i class="bi bi-geo-alt-fill text-warning me-2"></i>NIPAP Building, Real Street, Brgy. Buena Suerte, El Nido, Palawan</p>
+          <p class="small text-white-50 mb-2"><i class="bi bi-telephone-fill text-warning me-2"></i>0919-002-1389 / 0906-449-0282</p>
+          <p class="small text-white-50 mb-0"><i class="bi bi-envelope-fill text-warning me-2"></i>elnidotourism@gmail.com</p>
+        </div>
+      </div>
+      <div class="footer-bottom text-center text-white-50">
+        &copy; 2026 Municipal Tourism Office – El Nido, Palawan. Applied Business Tools in Tourism Final Exam.
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
+
+  <script>
+    // Set minimum date to tomorrow
+    const dateInput = document.getElementById('bookDate');
+    if (dateInput) {
+      const tomorrow = new Date();
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      dateInput.min = tomorrow.toISOString().split('T')[0];
+      dateInput.value = tomorrow.toISOString().split('T')[0];
+    }
+
+    // Dynamic Live Price Calculator on Form
+    function updateBookingSummary() {
+      const pkgSelect = document.getElementById('bookPackage');
+      const guestsInput = document.getElementById('bookGuests');
+      const ecoFee = document.getElementById('bookAddEcoFee');
+      const kayak = document.getElementById('bookAddKayak');
+      const van = document.getElementById('bookAddVan');
+
+      if (!pkgSelect || !guestsInput) return;
+
+      const basePrice = parseFloat(pkgSelect.value) || 8500;
+      const guests = parseInt(guestsInput.value) || 1;
+      const selectedOption = pkgSelect.options[pkgSelect.selectedIndex];
+      const pkgName = selectedOption.getAttribute('data-name') || selectedOption.textContent;
+
+      const baseTotal = basePrice * guests;
+      const ecoTotal = (ecoFee && ecoFee.checked) ? 200 * guests : 0;
+      const kayakTotal = (kayak && kayak.checked) ? 300 * guests : 0;
+      const vanTotal = (van && van.checked) ? 700 * guests : 0;
+      const grandTotal = baseTotal + ecoTotal + kayakTotal + vanTotal;
+
+      document.getElementById('summaryPkgName').textContent = `${pkgName} (x${guests})`;
+      document.getElementById('summaryPkgCost').textContent = `₱${baseTotal.toLocaleString()}`;
+      document.getElementById('summaryEcoCost').textContent = `₱${ecoTotal.toLocaleString()}`;
+      document.getElementById('summaryKayakCost').textContent = `₱${kayakTotal.toLocaleString()}`;
+      document.getElementById('summaryVanCost').textContent = `₱${vanTotal.toLocaleString()}`;
+      document.getElementById('summaryTotalAmount').textContent = `₱${grandTotal.toLocaleString()}`;
+
+      return { pkgName, basePrice, guests, grandTotal };
+    }
+
+    // Render bookings from LocalStorage
+    function renderBookingsList() {
+      const container = document.getElementById('bookingHistoryContainer');
+      if (!container) return;
+
+      const bookings = LocalDB.get(DB_KEYS.BOOKINGS);
+      if (bookings.length === 0) {
+        container.innerHTML = '<div class="text-center py-4 text-muted small"><i class="bi bi-calendar-x fs-3 d-block mb-2"></i>No active reservations found in local database. Fill the form to reserve.</div>';
+        return;
+      }
+
+      let html = '';
+      bookings.forEach(b => {
+        html += `
+          <div class="booking-history-item">
+            <div>
+              <div class="d-flex align-items-center gap-2">
+                <strong class="text-dark small">${b.refNumber}</strong>
+                <span class="badge bg-success" style="font-size: 0.7rem;">${b.status || 'Confirmed'}</span>
+              </div>
+              <div class="fw-semibold text-success small">${b.packageName}</div>
+              <div class="text-muted" style="font-size: 0.78rem;">
+                <i class="bi bi-person"></i> ${b.fullName} &bull; ${b.guests} Pax &bull; <i class="bi bi-calendar"></i> ${b.travelDate}
+              </div>
+            </div>
+            <div class="text-end">
+              <strong class="text-dark d-block">₱${b.totalPrice.toLocaleString()}</strong>
+              <button class="btn btn-outline-danger btn-sm py-0 px-2 mt-1" onclick="deleteBooking('${b.refNumber}')" title="Cancel Reservation">
+                <i class="bi bi-x"></i>
+              </button>
+            </div>
+          </div>
+        `;
+      });
+      container.innerHTML = html;
+    }
+
+    // Delete single booking
+    function deleteBooking(refNumber) {
+      if (confirm(`Are you sure you want to cancel reservation ${refNumber}?`)) {
+        LocalDB.remove(DB_KEYS.BOOKINGS, 'refNumber', refNumber);
+        renderBookingsList();
+        showToast('Reservation Cancelled', `Booking ${refNumber} removed from local storage.`);
+      }
+    }
+
+    // Clear all bookings
+    function clearAllBookings() {
+      if (confirm('Clear all local reservations?')) {
+        localStorage.removeItem(DB_KEYS.BOOKINGS);
+        renderBookingsList();
+        updateNavbarCounts();
+        showToast('Database Reset', 'All reservation history cleared.');
+      }
+    }
+
+    // Read URL query params to auto-select package
+    function setupUrlParams() {
+      const params = new URLSearchParams(window.location.search);
+      const pkgParam = params.get('package');
+      const pkgSelect = document.getElementById('bookPackage');
+      if (pkgParam && pkgSelect) {
+        if (pkgParam === 'tour-a') pkgSelect.value = '1200';
+        else if (pkgParam === 'tour-c') pkgSelect.value = '1300';
+        else if (pkgParam === 'inland-safari') pkgSelect.value = '2500';
+        else if (pkgParam === '5d4n-luxury') pkgSelect.value = '14500';
+        else pkgSelect.value = '8500';
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      setupUrlParams();
+      updateBookingSummary();
+      renderBookingsList();
+
+      ['bookPackage', 'bookGuests', 'bookAddEcoFee', 'bookAddKayak', 'bookAddVan'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) {
+          el.addEventListener('change', updateBookingSummary);
+          el.addEventListener('input', updateBookingSummary);
+        }
+      });
+
+      // Handle Reservation Form Submit
+      const form = document.getElementById('bookingForm');
+      if (form) {
+        form.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const summary = updateBookingSummary();
+          const refNumber = generateRefNumber();
+
+          const newBooking = {
+            refNumber: refNumber,
+            fullName: document.getElementById('bookFullName').value.trim(),
+            email: document.getElementById('bookEmail').value.trim(),
+            phone: document.getElementById('bookPhone').value.trim(),
+            nationality: document.getElementById('bookNationality').value.trim(),
+            packageName: summary.pkgName,
+            packagePrice: summary.basePrice,
+            guests: summary.guests,
+            travelDate: document.getElementById('bookDate').value,
+            notes: document.getElementById('bookNotes').value.trim(),
+            totalPrice: summary.grandTotal,
+            status: 'Confirmed',
+            timestamp: new Date().toISOString()
+          };
+
+          // Save to Local DB
+          LocalDB.insert(DB_KEYS.BOOKINGS, newBooking);
+          renderBookingsList();
+
+          // Show Voucher Modal
+          document.getElementById('voucherRefCode').textContent = newBooking.refNumber;
+          document.getElementById('voucherGuestName').textContent = newBooking.fullName;
+          document.getElementById('voucherPackage').textContent = newBooking.packageName;
+          document.getElementById('voucherDate').textContent = newBooking.travelDate;
+          document.getElementById('voucherPax').textContent = `${newBooking.guests} Person(s)`;
+          document.getElementById('voucherTotal').textContent = `₱${newBooking.totalPrice.toLocaleString()}`;
+
+          const modal = new bootstrap.Modal(document.getElementById('bookingConfirmationModal'));
+          modal.show();
+
+          form.reset();
+          updateBookingSummary();
+          showToast('Booking Successful!', `Reservation recorded as ${refNumber}.`);
+        });
+      }
+    });
+  </script>
+</body>
+</html>

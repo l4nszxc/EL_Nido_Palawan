@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery | El Nido, Palawan Tourism Platform</title>
+  <meta name="description" content="Explore high-definition photographs of El Nido: Big Lagoon, Secret Lagoon, Shimizu Island snorkeling, Nacpan Twin Beaches, and authentic grilled island feasts.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- TOP TICKER -->
+  <div class="py-2 px-3 bg-dark text-white border-bottom border-warning d-none d-md-block" style="font-size: 0.85rem;">
+    <div class="container d-flex justify-content-between align-items-center">
+      <div>
+        <i class="bi bi-geo-alt-fill text-warning me-2"></i>
+        <span>NIPAP Building, Real Street, Brgy. Buena Suerte, El Nido, Palawan</span>
+        <span class="mx-3 text-secondary">|</span>
+        <i class="bi bi-telephone-fill text-warning me-2"></i>
+        <span>0919-002-1389 / 0906-449-0282</span>
+      </div>
+      <div>
+        <span class="badge bg-success me-2"><i class="bi bi-shield-check"></i> Municipal Accredited</span>
+        <span class="text-light"><i class="bi bi-envelope me-1"></i> elnidotourism@gmail.com</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAVIGATION -->
+  <nav class="navbar navbar-expand-lg elnido-navbar sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <i class="bi bi-water text-warning fs-3"></i>
+        <div>
+          <span class="d-block brand-font fw-bold lh-1 text-white">EL NIDO</span>
+          <span class="d-block small text-warning fw-normal" style="font-size: 0.72rem; letter-spacing: 0.15em;">PALAWAN, PHILIPPINES</span>
+        </div>
+      </a>
+      <button class="navbar-toggler text-white border-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
+        <i class="bi bi-list fs-2"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarMain">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+          <li class="nav-item"><a class="nav-link" href="index.html"><i class="bi bi-house-door me-1"></i> Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About El Nido</a></li>
+          <li class="nav-item"><a class="nav-link" href="destinations.html">Attractions</a></li>
+          <li class="nav-item"><a class="nav-link" href="packages.html">Tour Packages</a></li>
+          <li class="nav-item"><a class="nav-link active" href="gallery.html">Gallery</a></li>
+          <li class="nav-item"><a class="nav-link" href="travel-info.html">Travel Guide</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+          <li class="nav-item ms-lg-2">
+            <a class="nav-link nav-cta-btn" href="booking.html">
+              <i class="bi bi-calendar-check me-1"></i> Book Now
+              <span class="badge-count" id="bookingCountBadge">0</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <header class="py-5 text-white" style="background: linear-gradient(rgba(11, 79, 63, 0.88), rgba(7, 56, 45, 0.94)), url('assets/images/brochure_back.jpg') center/cover no-repeat;">
+    <div class="container py-4 text-center">
+      <span class="badge bg-warning text-dark px-3 py-2 rounded-pill fw-bold text-uppercase mb-3">Official Visual Showcase</span>
+      <h1 class="display-4 fw-bold mb-3">El Nido Experiential Photo Gallery</h1>
+      <p class="lead text-white-50 mx-auto" style="max-width: 740px;">
+        Glimpse the breathtaking scenery of Bacuit Bay, certified eco-adventures, beachfront cottages, and authentic Palawan marine life.
+      </p>
+    </div>
+  </header>
+
+  <!-- GALLERY SECTION (Requirement: At least 8 relevant images with captions and proper attribution) -->
+  <main class="py-5">
+    <div class="container py-3">
+
+      <!-- Gallery Filter Buttons -->
+      <div class="d-flex flex-wrap justify-content-center gap-2 mb-5">
+        <button class="gallery-filter-btn active" onclick="filterGallery('all')">All Images (10)</button>
+        <button class="gallery-filter-btn" onclick="filterGallery('lagoons')">Lagoons &amp; Cliffs</button>
+        <button class="gallery-filter-btn" onclick="filterGallery('beaches')">Beaches &amp; Sunsets</button>
+        <button class="gallery-filter-btn" onclick="filterGallery('marine')">Marine &amp; Dining</button>
+        <button class="gallery-filter-btn" onclick="filterGallery('brochure')">Official Brochure</button>
+      </div>
+
+      <!-- Gallery Grid -->
+      <div class="row g-4" id="galleryGrid">
+
+        <!-- Image 1: Official Front Brochure -->
+        <div class="col-md-6 col-lg-4 gallery-card" data-category="brochure">
+          <div class="gallery-item shadow-sm" onclick="openLightbox('assets/images/brochure_front.jpg', 'Official Tourism Tri-Fold Brochure (Cover & Packages)', 'Municipal Tourism Office - El Nido, Palawan')">
+            <img src="assets/images/brochure_front.jpg" alt="Official El Nido Tourism Brochure">
+            <div class="gallery-caption">
+              <span class="badge bg-warning text-dark mb-1">Official Municipal Publication</span>
+              <h6 class="fw-bold mb-0">Official 4D3N Tri-Fold Brochure (Front)</h6>
+              <small class="text-white-50">Featuring ₱8,500 rate, Tour A highlights, and Municipal hotlines.</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- Image 2: Official Back Brochure / Landscape -->
+        <div class="col-md-6 col-lg-4 gallery-card" data-category="brochure">
+          <div class="gallery-item shadow-sm" onclick="openLightbox('assets/images/brochure_back.jpg', 'Welcome to El Nido - Island Hopping Adventure Banner', 'Municipal Tourism Office - El Nido, Palawan')">
+            <img src="assets/images/brochure_back.jpg" alt="El Nido Landscape Panorama">
+            <div class="gallery-caption">
+              <span class="badge bg-warning text-dark mb-1">Official Destination Visual</span>
+              <h6 class="fw-bold mb-0">Bacuit Bay Karst Panoramic Vista</h6>
+              <small class="text-white-50">Limestone cliffs, outrigger banca boat, and beachfront villas.</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- Image 3: Big Lagoon Kayaking -->
+        <div class="col-md-6 col-lg-4 gallery-card" data-category="lagoons">
+          <div class="gallery-item shadow-sm" onclick="openLightbox('https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?auto=format&fit=crop&w=1200&q=80', 'Big Lagoon Kayaking in Emerald Waters', 'Licensed via Unsplash - Travel Photography')">
+            <img src="https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?auto=format&fit=crop&w=800&q=80" alt="Big Lagoon Kayaking">
+            <div class="gallery-caption">
+              <span class="badge bg-success mb-1">Tour A Icon</span>
+              <h6 class="fw-bold mb-0">Kayaking in Big Lagoon Shallows</h6>
+              <small class="text-white-50">Gliding between towering limestone cliffs into turquoise calm.</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- Image 4: Secret Lagoon Hidden Pool -->
+        <div class="col-md-6 col-lg-4 gallery-card" data-category="lagoons">
+          <div class="gallery-item shadow-sm" onclick="openLightbox('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80', 'Secret Lagoon Hidden Entrance & Natural Pool', 'Licensed via Unsplash - Nature Photography')">
+            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" alt="Secret Lagoon Pool">
+            <div class="gallery-caption">
+              <span class="badge bg-success mb-1">Enclosed Karst Cavern</span>
+              <h6 class="fw-bold mb-0">Secret Lagoon Natural Setting</h6>
+              <small class="text-white-50">Enclosed circular natural pool accessed through a rock arch.</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- Image 5: Nacpan Beach Coastline -->
+        <div class="col-md-6 col-lg-4 gallery-card" data-category="beaches">
+          <div class="gallery-item shadow-sm" onclick="openLightbox('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80', 'Nacpan Beach 4km Golden Sands', 'Licensed via Unsplash - Philippine Tourism')">
+            <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" alt="Nacpan Beach Golden Sands">
+            <div class="gallery-caption">
+              <span class="badge bg-warning text-dark mb-1">Inland Landmark</span>
+              <h6 class="fw-bold mb-0">Nacpan Beach Golden Coastline</h6>
+              <small class="text-white-50">4-kilometer stretch of powdery shore and sway coconut groves.</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- Image 6: Shimizu Island Coral Reef Snorkeling -->
+        <div class="col-md-6 col-lg-4 gallery-card" data-category="marine">
+          <div class="gallery-item shadow-sm" onclick="openLightbox('https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1200&q=80', 'Shimizu Island Snorkeling & Coral Reef Life', 'Licensed via Unsplash - Marine Protected Area')">
+            <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=800&q=80" alt="Shimizu Island Snorkeling">
+            <div class="gallery-caption">
+              <span class="badge bg-primary mb-1">Marine Sanctuary</span>
+              <h6 class="fw-bold mb-0">Shimizu Island Coral Gardens</h6>
+              <small class="text-white-50">High-visibility reef snorkeling with sea turtles and clownfish.</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- Image 7: Seven Commandos Beach & Relaxation -->
+        <div class="col-md-6 col-lg-4 gallery-card" data-category="beaches">
+          <div class="gallery-item shadow-sm" onclick="openLightbox('https://images.unsplash.com/photo-1510414842594-a61752afb394?auto=format&fit=crop&w=1200&q=80', 'Seven Commandos Beach Coconut Palms & Beachfront Relaxation', 'Licensed via Unsplash - Tropical Travels')">
+            <img src="https://images.unsplash.com/photo-1510414842594-a61752afb394?auto=format&fit=crop&w=800&q=80" alt="Seven Commandos Beach">
+            <div class="gallery-caption">
+              <span class="badge bg-info text-dark mb-1">Island Chill</span>
+              <h6 class="fw-bold mb-0">Seven Commandos Beach</h6>
+              <small class="text-white-50">Swimming, relaxing, and tropical beach scenery under palm trees.</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- Image 8: Island Seafood Lunch Feast -->
+        <div class="col-md-6 col-lg-4 gallery-card" data-category="marine">
+          <div class="gallery-item shadow-sm" onclick="openLightbox('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1200&q=80', 'Traditional Grilled Island Seafood Feast', 'Accredited Boatmen Catering - El Nido')">
+            <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800&q=80" alt="Grilled Island Lunch Feast">
+            <div class="gallery-caption">
+              <span class="badge bg-warning text-dark mb-1">Culinary Tradition</span>
+              <h6 class="fw-bold mb-0">Authentic Island Lunch Feast</h6>
+              <small class="text-white-50">Fresh grilled fish, squid, barbecue, rice, and tropical mangoes.</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- Image 9: Las Cabañas Sunset -->
+        <div class="col-md-6 col-lg-4 gallery-card" data-category="beaches">
+          <div class="gallery-item shadow-sm" onclick="openLightbox('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80', 'Las Cabañas Beach Golden Sunset', 'Licensed via Unsplash - Philippine Sunset')">
+            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" alt="Las Cabañas Sunset">
+            <div class="gallery-caption">
+              <span class="badge bg-danger mb-1">Sunset Capital</span>
+              <h6 class="fw-bold mb-0">Las Cabañas Coastal Sunset</h6>
+              <small class="text-white-50">End-of-day coastal relaxation overlooking Bacuit Archipelago.</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- Image 10: Beachfront Cottages & Island Accommodations -->
+        <div class="col-md-6 col-lg-4 gallery-card" data-category="lagoons">
+          <div class="gallery-item shadow-sm" onclick="openLightbox('https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1200&q=80', 'El Nido Beachfront Cottages & Lodging', 'Municipal Tourism Accommodations Registry')">
+            <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80" alt="Beachfront Cottages">
+            <div class="gallery-caption">
+              <span class="badge bg-success mb-1">Hospitality</span>
+              <h6 class="fw-bold mb-0">Eco-Friendly Beachfront Cottages</h6>
+              <small class="text-white-50">Wake up steps away from the turquoise ocean waters.</small>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Attribution & Licensing Note (Academic Requirement) -->
+      <div class="alert alert-secondary mt-5 small text-center" role="alert">
+        <i class="bi bi-info-circle-fill me-2"></i>
+        <strong>Image Attribution &amp; Academic Compliance:</strong> Official promotional materials provided by the Municipal Tourism Office – El Nido, Palawan (NIPAP Building, Brgy. Buena Suerte). Supplemental high-resolution photography licensed under Unsplash Free Commercial License.
+      </div>
+
+    </div>
+  </main>
+
+  <!-- LIGHTBOX MODAL -->
+  <div class="modal fade" id="galleryLightboxModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content bg-dark text-white border-0">
+        <div class="modal-header border-0 pb-0">
+          <h5 class="modal-title fw-bold" id="lightboxTitle">Image Title</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center p-3">
+          <img id="lightboxImg" src="" alt="Enlarged gallery visual" class="img-fluid rounded-3 mb-3" style="max-height: 70vh; object-fit: contain;">
+          <p id="lightboxCredit" class="text-white-50 small mb-0">Credit information</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="elnido-footer">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4 col-md-6">
+          <div class="d-flex align-items-center gap-2 mb-3">
+            <i class="bi bi-water text-warning fs-2"></i>
+            <span class="fs-4 fw-bold text-white">EL NIDO, PALAWAN</span>
+          </div>
+          <p class="small text-white-50 mb-3">Official Municipal Tourism Information and Online Reservation Platform.</p>
+          <div class="d-flex gap-2">
+            <a href="https://facebook.com" target="_blank" class="social-icon-btn"><i class="bi bi-facebook"></i></a>
+            <a href="https://instagram.com" target="_blank" class="social-icon-btn"><i class="bi bi-instagram"></i></a>
+            <a href="https://twitter.com" target="_blank" class="social-icon-btn"><i class="bi bi-twitter-x"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6 col-6">
+          <h5 class="footer-heading">Quick Links</h5>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="destinations.html">Attractions</a></li>
+            <li><a href="packages.html">Packages</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-6 col-6">
+          <h5 class="footer-heading">Travel Help</h5>
+          <ul class="footer-links">
+            <li><a href="travel-info.html">Travel Guide</a></li>
+            <li><a href="booking.html">Booking Portal</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <h5 class="footer-heading">Tourism Office Location</h5>
+          <p class="small text-white-50 mb-2"><i class="bi bi-geo-alt-fill text-warning me-2"></i>NIPAP Building, Real Street, Brgy. Buena Suerte, El Nido, Palawan</p>
+          <p class="small text-white-50 mb-2"><i class="bi bi-telephone-fill text-warning me-2"></i>0919-002-1389 / 0906-449-0282</p>
+          <p class="small text-white-50 mb-0"><i class="bi bi-envelope-fill text-warning me-2"></i>elnidotourism@gmail.com</p>
+        </div>
+      </div>
+      <div class="footer-bottom text-center text-white-50">
+        &copy; 2026 Municipal Tourism Office – El Nido, Palawan. Applied Business Tools in Tourism Final Exam.
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    // Filter Gallery Items
+    function filterGallery(category) {
+      const cards = document.querySelectorAll('.gallery-card');
+      const buttons = document.querySelectorAll('.gallery-filter-btn');
+
+      buttons.forEach(b => {
+        if (b.textContent.toLowerCase().includes(category) || (category === 'all' && b.textContent.toLowerCase().includes('all'))) {
+          b.classList.add('active');
+        } else {
+          b.classList.remove('active');
+        }
+      });
+
+      cards.forEach(card => {
+        if (category === 'all' || card.getAttribute('data-category') === category) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // Open Lightbox
+    function openLightbox(src, title, credit) {
+      document.getElementById('lightboxImg').src = src;
+      document.getElementById('lightboxTitle').textContent = title;
+      document.getElementById('lightboxCredit').innerHTML = '<strong>Attribution / Source:</strong> ' + credit;
+      const modal = new bootstrap.Modal(document.getElementById('galleryLightboxModal'));
+      modal.show();
+    }
+  </script>
+</body>
+</html>
