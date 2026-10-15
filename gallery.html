@@ -81,39 +81,15 @@
 
       <!-- Gallery Filter Buttons -->
       <div class="d-flex flex-wrap justify-content-center gap-2 mb-5">
-        <button class="gallery-filter-btn active" onclick="filterGallery('all')">All Images (10)</button>
+        <button class="gallery-filter-btn active" onclick="filterGallery('all')">All Images</button>
         <button class="gallery-filter-btn" onclick="filterGallery('lagoons')">Lagoons &amp; Cliffs</button>
         <button class="gallery-filter-btn" onclick="filterGallery('beaches')">Beaches &amp; Sunsets</button>
         <button class="gallery-filter-btn" onclick="filterGallery('marine')">Marine &amp; Dining</button>
-        <button class="gallery-filter-btn" onclick="filterGallery('brochure')">Official Brochure</button>
       </div>
 
       <!-- Gallery Grid -->
       <div class="row g-4" id="galleryGrid">
 
-        <!-- Image 1: Official Front Brochure -->
-        <div class="col-md-6 col-lg-4 gallery-card" data-category="brochure">
-          <div class="gallery-item shadow-sm" onclick="openLightbox('assets/images/brochure_front.jpg', 'Official Tourism Tri-Fold Brochure (Cover & Packages)', 'Municipal Tourism Office - El Nido, Palawan')">
-            <img src="assets/images/brochure_front.jpg" alt="Official El Nido Tourism Brochure">
-            <div class="gallery-caption">
-              <span class="badge bg-warning text-dark mb-1">Official Municipal Publication</span>
-              <h6 class="fw-bold mb-0">Official 4D3N Tri-Fold Brochure (Front)</h6>
-              <small class="text-white-50">Featuring ₱8,500 rate, Tour A highlights, and Municipal hotlines.</small>
-            </div>
-          </div>
-        </div>
-
-        <!-- Image 2: Official Back Brochure / Landscape -->
-        <div class="col-md-6 col-lg-4 gallery-card" data-category="brochure">
-          <div class="gallery-item shadow-sm" onclick="openLightbox('assets/images/brochure_back.jpg', 'Welcome to El Nido - Island Hopping Adventure Banner', 'Municipal Tourism Office - El Nido, Palawan')">
-            <img src="assets/images/brochure_back.jpg" alt="El Nido Landscape Panorama">
-            <div class="gallery-caption">
-              <span class="badge bg-warning text-dark mb-1">Official Destination Visual</span>
-              <h6 class="fw-bold mb-0">Bacuit Bay Karst Panoramic Vista</h6>
-              <small class="text-white-50">Limestone cliffs, outrigger banca boat, and beachfront villas.</small>
-            </div>
-          </div>
-        </div>
 
         <!-- Image 3: Big Lagoon Kayaking -->
         <div class="col-md-6 col-lg-4 gallery-card" data-category="lagoons">
@@ -195,18 +171,6 @@
               <span class="badge bg-danger mb-1">Sunset Capital</span>
               <h6 class="fw-bold mb-0">Las Cabañas Coastal Sunset</h6>
               <small class="text-white-50">End-of-day coastal relaxation overlooking Bacuit Archipelago.</small>
-            </div>
-          </div>
-        </div>
-
-        <!-- Image 10: Beachfront Cottages & Island Accommodations -->
-        <div class="col-md-6 col-lg-4 gallery-card" data-category="lagoons">
-          <div class="gallery-item shadow-sm" onclick="openLightbox('https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1200&q=80', 'El Nido Beachfront Cottages & Lodging', 'Municipal Tourism Accommodations Registry')">
-            <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80" alt="Beachfront Cottages">
-            <div class="gallery-caption">
-              <span class="badge bg-success mb-1">Hospitality</span>
-              <h6 class="fw-bold mb-0">Eco-Friendly Beachfront Cottages</h6>
-              <small class="text-white-50">Wake up steps away from the turquoise ocean waters.</small>
             </div>
           </div>
         </div>
